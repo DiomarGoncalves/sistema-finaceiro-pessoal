@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <property name="author" value="arthurshakal@gmail.com" />
+
+    <property name="uuid_function" value="uuid_generate_v4()" dbms="postgresql"/>
+    <property name="text_type" value="text" dbms="postgresql"/>
+    <property name="uuid_type" value="uuid" dbms="postgresql"/>
+
+    <changeSet id="create-extension" author="arthurshakal@gmail.com" dbms="postgresql">
+        <sql>
+            CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+        </sql>
+    </changeSet>
+
+    <changeSet id="create-schemas" author="arthurshakal@gmail.com" dbms="postgresql">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS "registration";
+            CREATE SCHEMA IF NOT EXISTS "administration";
+        </sql>
+    </changeSet>
+
+    <!--
+        down here, you should put your versioned changelogs for production
+    -->
+    <include relativeToChangelogFile="true" file="db.changelog.20210404.xml"/>
+    <include relativeToChangelogFile="true" file="db.changelog.20220620.xml"/>
+    <include relativeToChangelogFile="true" file="db.changelog.20230416.xml"/>
+    <include relativeToChangelogFile="true" file="db.changelog.20230502.xml"/>
+    <include relativeToChangelogFile="true" file="db.changelog.20230613.xml"/>
+    <include relativeToChangelogFile="true" file="db.changelog.20240323.xml"/>
+    <include relativeToChangelogFile="true" file="db.changelog.20240501.xml"/>
+
+    <!--
+        use this changelog to initialize testing database.
+        ATTENTION: this line must stay after database versions!
+    -->
+    <include relativeToChangelogFile="true" context="test" file="db.changelog.testing.xml"/>
+</databaseChangeLog>

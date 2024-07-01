@@ -1,0 +1,26 @@
+spring:
+  liquibase:
+    contexts: test
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  mail:
+    host: 127.0.0.1
+    port: 3025
+    username: mail_user
+    password: mail_password
+    properties:
+      mail.debug: true
+
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+
+logging:
+  level:
+    br.com.webbudget: debug
+    org.springframework.web: debug
